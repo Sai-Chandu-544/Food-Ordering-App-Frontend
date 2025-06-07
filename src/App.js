@@ -14,7 +14,7 @@ import {PrivateRoute } from './HomePage_Components/privateRoutes'
 
 
 
-
+//  "homepage":"https://sai-chandu-544.github.io/food-ordering-app-frontend",
 
 
 

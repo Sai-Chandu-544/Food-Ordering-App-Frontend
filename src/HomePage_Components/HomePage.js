@@ -1,8 +1,7 @@
 
 import {Body1,Body2} from './body/body.js';
-import {MainImages} from  './body/data.js'
-import { useLocation } from "react-router-dom";
-import { useState,useEffect } from 'react';
+import {MainImages,Home} from  './body/data.js'
+
 
 
 
@@ -11,6 +10,7 @@ import { useState,useEffect } from 'react';
 
 
 export const HomePage=()=>{
+  console.log(Home[0].url)
   
 
   
@@ -19,7 +19,7 @@ export const HomePage=()=>{
          <div>
           
       
-      <Body1/>
+      <Body1 Home={Home}/>
       <Body2 images={MainImages}/>
      
      

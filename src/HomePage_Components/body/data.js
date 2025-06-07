@@ -1,34 +1,34 @@
 export const MainImages=[
     {
-        url:"/project images/cakeImages/cake1.jpg",
+        url:"/project images/cake1.jpg",
         title:"Cakes"
     },
     {
-        url:"/project images/desertImages/desert1.jpg",
+        url:"/project images/desert1.jpg",
         title:"Deserts"
     },
     {
-        url:"/project images/ice creamImages/ice cream1.jpg",
+        url:"/project images/ice cream1.jpg",
         title:"Ice Creams"
     },
     {
-        url:"/project images/salad images/salad1.jpg",
+        url:"/project images/salad1.jpg",
         title:"Salads"
     },
     {
-        url:"/project images/pizza images/pizza1.jpg",
+        url:"/project images/pizza1.jpg",
         title:"Pizzas"
     },
     {
-        url:"/project images/sandwich/sandwich1.jpg",
+        url:"/project images/sandwich1.jpg",
         title:"Sand Wichs"
     },
     {
-        url:"/project images/veg images/veg1.jpg",
+        url:"/project images/veg1.jpg",
         title:"Veg Foods"
     },
     {
-        url:"/project images/Non Veg images/nonveg1.jpg",
+        url:"/project images/nonveg1.jpg",
         title:"Non Veg Foods"
     }
 
@@ -71,3 +71,10 @@ export const vegImages=[
     }
 
 ]
+
+export const Home=[
+    {
+    url:"/project images/Homeimage.jpg"
+}
+]
+

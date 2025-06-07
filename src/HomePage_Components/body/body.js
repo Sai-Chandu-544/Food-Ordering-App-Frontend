@@ -3,15 +3,19 @@ import './body2.css';
 
 
 
-export const Body1 = () => {
+
+export const Body1 = ({Home}) => {
+  
+  
 
   return (
     <div className="main-body">
       <div className="sub-body">
-        <img src="/project images/Homeimage.jpg" alt="background" />
+        <img src={Home[0].url} alt="background" />
+       
         <h2>Order Your Favourite Food</h2>
         <p>Get your favorite restaurant food delivered or picked up, with just a few taps.</p>
-      </div>
+      </div>s
     </div>
   )
 }
