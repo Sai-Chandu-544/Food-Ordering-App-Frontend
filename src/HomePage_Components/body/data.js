@@ -1,34 +1,45 @@
+import Homeimage from '../../project_images/Homeimage.jpg'
+import cake from '../../project_images/cake1.jpg'
+import desert from '../../project_images/desert1.jpg'
+import ice_cream from '../../project_images/ice_cream1.jpg'
+import nonveg from '../../project_images/nonveg1.jpg'
+import pizza from '../../project_images/pizza1.jpg'
+import salad from '../../project_images/salad1.jpg'
+import sandwich from '../../project_images/sandwich1.jpg'
+import veg from '../../project_images/veg1.jpg'
+
+
 export const MainImages=[
     {
-        url:"/project images/cake1.jpg",
+        url:cake,
         title:"Cakes"
     },
     {
-        url:"/project images/desert1.jpg",
+        url:desert,
         title:"Deserts"
     },
     {
-        url:"/project images/ice cream1.jpg",
+        url:ice_cream,
         title:"Ice Creams"
     },
     {
-        url:"/project images/salad1.jpg",
+        url:nonveg,
         title:"Salads"
     },
     {
-        url:"/project images/pizza1.jpg",
+        url:pizza,
         title:"Pizzas"
     },
     {
-        url:"/project images/sandwich1.jpg",
+        url:salad,
         title:"Sand Wichs"
     },
     {
-        url:"/project images/veg1.jpg",
+        url:sandwich,
         title:"Veg Foods"
     },
     {
-        url:"/project images/nonveg1.jpg",
+        url:veg,
         title:"Non Veg Foods"
     }
 
@@ -74,7 +85,7 @@ export const vegImages=[
 
 export const Home=[
     {
-    url:"/project images/Homeimage.jpg"
+    url:Homeimage
 }
 ]
 

@@ -10,7 +10,8 @@ import {MainImages,Home} from  './body/data.js'
 
 
 export const HomePage=()=>{
-  console.log(Home[0].url)
+  // console.log(Home[0].url)
+
   
 
   

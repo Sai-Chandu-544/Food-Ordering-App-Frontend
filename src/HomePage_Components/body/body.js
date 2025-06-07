@@ -6,7 +6,7 @@ import './body2.css';
 
 export const Body1 = ({Home}) => {
   
-  
+  // console.log(Home[0].url)
 
   return (
     <div className="main-body">
