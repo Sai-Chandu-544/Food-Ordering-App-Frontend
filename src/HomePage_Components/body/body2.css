@@ -1,0 +1,153 @@
+
+*{
+box-sizing: border-box;
+}
+
+.body2-main{
+    height: 20vh;
+    width: 100vw;
+    margin-top: 10px;
+    /* background-color: blanchedalmond; */
+}
+.body2-main h2{
+    margin-top: 45px;
+    margin-left: 50px;
+    font-weight: 900;
+}
+.body2-main p{
+    margin-top: 10px;
+    font-weight: 800;
+    margin-left: 50px;
+}
+
+
+.container{
+    height: 20vh;
+    width: 100vw;
+    margin-top: 50px;
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: space-around;
+    
+    
+
+}
+.each-container{
+    height: 100px;
+    width:100px;
+    border-radius: 50%;
+    margin-top: 20px;
+    
+    
+}
+
+.specific-container{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    /* margin-left: 20px; */
+    transition: 1s ease-in-out;
+}
+.specific-container:hover{
+    transform:scale(1.2); 
+    
+
+}
+
+
+
+.specific-container img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 4px solid black;
+    cursor: pointer;
+}
+
+/* .title-content p{
+    background-color: cadetblue;
+    text-wrap: nowrap;
+    
+    
+} */
+
+.title-content{
+    /* background-color:antiquewhite; */
+    margin-top: 5px;
+    text-align: center;
+}
+
+@media(min-width:350px) and (max-width:1400px){
+    .body2-main{
+    height: 20vh;
+    width: 100vw;
+    margin-top: 8px;
+   
+}
+.body2-main h2{
+    margin-top: 45px;
+    margin-left: 50px;
+    font-weight: 900;
+    font-size: 12px;
+}
+.body2-main p{
+    margin-top: 8px;
+    font-weight: 800;
+    margin-left: 50px;
+    font-size: 8px;
+}
+
+
+.container{
+    height: 40vh;
+    width: 100vw;
+    margin-top: 10px;  
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 80px;
+    /* background-color: antiquewhite; */
+    
+    
+
+}
+.each-container{
+    height: 50px;
+    width:50px;
+    border-radius: 50%;
+    margin-top: 20px;
+    
+    
+}
+
+.specific-container{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    /* margin-left: 20px; */
+    transition: 1s ease-in-out;
+}
+.specific-container:hover{
+    transform:scale(1.2); 
+    
+
+}
+
+
+
+.specific-container img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+
+.title-content{
+    margin-top: 5px;
+    text-align: center;
+    font-size: 8px;
+}
+
+
+}

@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Comfortaa;
+}
+
+.nav-main{
+    height:15vh;
+    width:100vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 200px 0px 40px;
+}
+.nav-logo{
+    color: tomato;
+    font-weight: 800;
+    font-size: 25px;
+     
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    font-size: 20px;
+    gap: 40px;
+    font-weight: 500;
+    cursor: pointer;
+   
+    
+
+    
+}
+.nav-list li a{
+  text-decoration: none; /* removes underline */
+  color: black; /* set your preferred color */
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+
+.nav-list li a:hover {
+  color: orangered;
+}
+.nav-list li {
+  text-decoration: none; /* removes underline */
+  color: black;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+
+.nav-list li :hover {
+  color: orangered;
+}
+
+.text{
+    height: 30px;
+    border-radius: 8px;
+    padding-left: 10px;
+}
+.list-container{
+    display: flex;
+    gap: 20px;
+    
+}
+button{
+   height: 30px;
+   width: 60px;
+   border-radius: 8px;
+   margin-left: 5px;
+   background-color: tomato;
+   cursor: pointer;
+   
+   
+}
+li a.active{
+  color: tomato;;
+
+}
+
+.search_bar span{
+  margin-left: 20px;
+}
+@media(min-width:350px) and (max-width:1500px){
+ 
+.nav-main{
+    height:15vh;
+    width:100vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 120px 0px 0px;
+    gap: 25px;
+    border: 2px solid black;
+    
+    
+    
+    
+}
+.nav-logo {
+  width: 200px;
+  height: 10px;
+ 
+
+
+}
+.nav-logo p{
+    color: tomato;
+    font-weight: 600;
+    font-size: 12px;
+       
+}
+.list-container{
+ 
+  display: flex;
+  height: 20px;
+ width: 60vw;
+  flex-direction: column;
+  gap: 5px;
+  /* border: 2px solid black; */
+ 
+
+}
+.search_bar{
+  display: flex;
+  flex-direction: row;
+  /* border: 2px solid black; */
+  
+
+}
+.text{
+  height: 15px;
+  width: 100px;
+  border-radius: 4px;
+  padding-left: 5px;
+}
+.text::placeholder{
+  font-size: 10px;
+}
+ 
+.nav-list {
+    list-style: none;
+    font-size: 10px;
+    font-weight: 500;
+    cursor: pointer; 
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    
+}
+.nav-list li a{
+  text-decoration: none; 
+  color: black; 
+  font-weight: 500;
+  transition: color 0.3s;
+ 
+}
+
+
+.nav-list li a:hover {
+  color: orangered;
+}
+
+button{
+   height: 15px;
+   width: 40px;
+   border-radius: 4px;
+   margin-left: 3px;
+   background-color: tomato;
+   cursor: pointer;
+    
+}
+.search-btn{
+  font-size: 10px;
+}
+.logout{
+  height: 10px;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+}

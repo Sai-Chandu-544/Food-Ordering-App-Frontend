@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Comfortaa;
+}
+body{
+    height: 100vh;
+    width:100vw;
+}
+
+.adminRegisterContainer{
+    height: 85vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5e7eb;
+    justify-content: center;
+    align-items: center;
+    border:2px solid black;
+  
+}
+
+.registerTitle{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.register_form{
+    height: 400px;
+    width:350px;
+    display: flex;
+    flex-direction: column;
+    background-color: 	#f3f4f6;
+    border-radius: 8%;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    border:2px solid black;
+    
+   
+    
+}
+.register_form input{
+    
+  height:25px;
+  width:200px;
+  border-radius: 8px;
+  margin-top: 10px;
+
+}
+
+ .register_button .button{
+    margin-top: 50px;
+    border-radius: 8px;
+    background-color: orangered;
+    
+
+
+} 
+
+
+
+
+
+
+/* Admin Panel CSS */
+
+.admin_navbar_container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    width: 100vw;
+    background-color: antiquewhite;
+}
+.admin_navbar_first_container{
+    font-size: 30px;
+    margin-left: 50px;
+   
+}
+.admin_navbar_second_container {
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.admin_navbar_second_container p{
+    margin-right: 50px;
+}
+
+
+.AdminBody{
+    width: 25vh;
+    height: 85vh;
+    background-color: aqua;
+    padding-top: 100px;
+    
+}
+
+.admin_list li{
+    font-size: 20px;
+    margin-top: 50px;
+    margin-left: 20px;
+    cursor: pointer;
+    list-style: none;
+
+   
+    
+
+}
+
+
+/* Admin Login */
+
+.adminLoginContainer{
+    height: 85vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5e7eb;
+    border: 2px solid black;;
+    
+    
+}
+ .loginTitle{
+   margin-bottom: 20px;
+   font-size: 30px;
+}
+
+.login_form{
+    height: 400px;
+    width:350px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: 	#f3f4f6;
+    border-radius: 8%;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+   
+    
+}
+.login_form input{
+    
+  height:25px;
+  width:200px;
+  border-radius: 8px;
+  margin-top: 10px;
+
+}
+
+ .login_button .button{
+    margin-top: 50px;
+    border-radius: 8px;
+    background-color: orangered;
+    
+
+
+} 
+
+/* AdminAddProducts */
+
+.adminAddContainer{
+    height: 85vh;
+    width:90vw;
+    display: flex;
+    /* flex-direction: column; */
+    background-color: #e5e7eb;
+    justify-content: center;
+    align-items: center;
+    
+    border: 2px solid black;
+
+}
+.addproductButton{
+    background-color: orangered;
+    width: 150px;
+   
+
+}
+.innerAdminAddProduct{
+    border: 2px solid black;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width:300px;
+    background-color:cornsilk;
+    gap: 20px;
+}
+
+
+/* menu_items */
+.menu_list{
+    border:2px solid black;
+    display: flex;
+    justify-content: space-between;
+
+}
+/* get_users */
+.get_users{
+     border:2px solid black;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+@media(min-width:350px) and (max-width:1400px){
+    body{
+        height:100vh;
+        width:100vw;
+    }
+    .admin_navbar_container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    width: 100vw;
+    background-color: antiquewhite;
+}
+.admin_navbar_first_container{
+    font-size: 10px;
+    margin-left: 20px;
+    font-weight: 500;
+   
+}
+.admin_navbar_second_container {
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.admin_navbar_second_container p{
+    margin-right: 20px;
+}
+
+
+.AdminBody{
+    width: 25vw;
+    height: 85vh;
+    background-color: aqua;
+    padding-top: 80px;
+}
+
+.admin_list li{
+    font-size: 10px;
+    margin-top: 50px;
+    margin-left: 10px;
+    cursor: pointer;
+    list-style: none;
+
+   
+    
+
+}
+
+
+    
+}
+@media (min-width:350px)and (max-width:1400px){
+    
+.adminRegisterContainer{
+    height: 85vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5e7eb;
+    justify-content: center;
+    align-items: center;
+    border:2px solid black;
+  
+}
+
+.registerTitle{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.register_form{
+    height: 400px;
+    width:250px;
+    display: flex;
+    flex-direction: column;
+    background-color: 	#f3f4f6;
+    border-radius: 8%;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    border:2px solid black;
+    
+   
+    
+}
+.register_form input{
+    
+  height:15px;
+  width:150px;
+  border-radius: 4px;
+  margin-top: 10px;
+
+}
+
+ .register_button .button{
+    margin-top: 25px;
+    width: 60px;
+    border-radius: 8px;
+   
+    font-size: 10px;
+    background-color: orangered;
+    
+
+
+} 
+
+
+  
+.register_form p{
+    font-size: 10px;
+}
+
+
+}
+
+@media (min-width:350px)and (max-width:1400px){
+.adminLoginContainer{
+    height: 85vh;
+   width:100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5e7eb;
+    border: 2px solid black;;
+    
+    
+}
+ .loginTitle{
+   margin-bottom: 10px;
+   font-size: 15px;
+}
+
+.login_form{
+    height: 400px;
+    width:250px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: 	#f3f4f6;
+    border-radius: 8%;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+   
+    
+}
+.login_form input{
+    
+  height:15px;
+  width:150px;
+  border-radius: 8px;
+  margin-top: 10px;
+
+}
+
+ .login_button .button{
+    margin-top: 25px;
+    border-radius: 4px;
+    background-color: orangered;
+    font-size: 10px;
+    
+
+
+} 
+.login_form p{
+    font-size: 10px;
+}
+
+}
+
+@media (min-width:350px)and (max-width:1400px){
+.adminAddContainer{
+    height: 85vh;
+    width:90vw;
+    display: flex;
+    /* flex-direction: column; */
+    background-color: #e5e7eb;
+    justify-content: center;
+    align-items: center;
+    
+    border: 2px solid black;
+
+}
+.addproductButton{
+    background-color: orangered;
+    width: 100px;
+   
+
+}
+.innerAdminAddProduct{
+    border: 2px solid black;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width:200px;
+    background-color:cornsilk;
+    gap: 10px;
+}
+}
