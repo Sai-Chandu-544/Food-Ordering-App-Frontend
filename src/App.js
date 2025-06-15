@@ -81,7 +81,7 @@ return (
           <Route path="/user/orders" element={<PrivateRoute><UserOrders/></PrivateRoute>}/>
        
 
-          <Route path="*" element={<Page404 />} />
+          {/* <Route path="*" element={<Page404 />} /> */}
         </Routes>
       )}
     </>
