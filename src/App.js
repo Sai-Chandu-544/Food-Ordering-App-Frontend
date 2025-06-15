@@ -72,7 +72,7 @@ return (
 
           {/* Protected Routes */}
           <Route path="/user/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
-          <Route path="/user/login" element={<UserLogin />} />
+          <Route path="/food-ordering-app-frontend/user/login" element={<UserLogin />} />
           <Route path="/user/register" element={<UserRegister handleStore={handleStore} />} />
           <Route path="/user/menu" element={<PrivateRoute><UserMenu /></PrivateRoute>} />
           <Route path="/user/menu/Veg" element={<PrivateRoute><Veg /></PrivateRoute>} />
