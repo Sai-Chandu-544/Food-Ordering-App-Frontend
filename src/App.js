@@ -12,6 +12,7 @@ import {useState} from 'react'
 import {Details} from './HomePage_Components/details';
 import {PrivateRoute } from './HomePage_Components/privateRoutes'
 import {UserOrders} from './HomePage_Components/orders'
+import {Welcome} from './HomePage_Components/welcome'
 
 
 
@@ -79,6 +80,7 @@ return (
           <Route path="/user/menu/Non Veg" element={<PrivateRoute><NonVeg /></PrivateRoute>} />
           <Route path="/user/details" element={<PrivateRoute> <Details /></PrivateRoute>} />
           <Route path="/user/orders" element={<PrivateRoute><UserOrders/></PrivateRoute>}/>
+          <Route path="/Food-Ordering-App-Frontend" element={<Welcome/>}/>
        
 
           {/* <Route path="*" element={<Page404 />} /> */}
