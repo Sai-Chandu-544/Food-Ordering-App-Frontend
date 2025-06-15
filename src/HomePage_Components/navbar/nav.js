@@ -1,5 +1,5 @@
-import {useState,useEffect} from 'react'
-import { Navigate, NavLink} from 'react-router-dom'
+import {useState} from 'react'
+import {  NavLink} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import './nav.css'
 import { AuthContext } from '../auth'
@@ -8,7 +8,7 @@ import { useContext } from 'react'
 
 
 
-export const Navbar=({handleSearch,store})=>{
+export const Navbar=({handleSearch})=>{
     const {auth}=useContext(AuthContext)
      const { logout } = useContext(AuthContext);
     const navigate=useNavigate()
@@ -72,10 +72,10 @@ export const Navbar=({handleSearch,store})=>{
                         <button className="search-btn" onClick={()=>handleSearch(input)}>Search</button>
                         
                     </div>
+                    <div>
 
-                    {
-                        auth.isAuthenticated &&  <p>{store}</p>
-                    }
+                   
+                    </div>
                    
                 
                 </div>

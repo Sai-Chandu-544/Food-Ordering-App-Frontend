@@ -144,8 +144,8 @@
 }
 
 .spinner {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border: 2px solid #f3f3f3; /* Light grey background */
   border-top: 2px solid orangered; /* Blue spinner */
   border-radius: 50%;
@@ -163,13 +163,13 @@
 }
 
 .loading {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   color: #555;
 }
 
 .page404{
   text-align: center;
-  font-size: 12px;
+  font-size: 20px;
   font-style: normal;
   margin-top: 5px;
 }
@@ -680,7 +680,7 @@
   height: 10px;
 }
 .remove_button{
-  height: 10px;
+  height: 15px;
   font-size: 6px;
 }
 .quantity_controls span{

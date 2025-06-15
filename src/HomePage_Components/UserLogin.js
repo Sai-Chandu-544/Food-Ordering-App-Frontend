@@ -40,9 +40,14 @@ export const UserLogin = ({setL}) => {
         });
         const data=await response.json();
         console.log(data)
+        // console.log(data.token)
+        // console.log(data.user._id)
+
        
     if (response.ok && data.token) {
-  login(data.token)
+  login(data.token,data.user._id,data.user.name,data.user.email)
+
+  
     //  setL(false)
      navigate('/')
     

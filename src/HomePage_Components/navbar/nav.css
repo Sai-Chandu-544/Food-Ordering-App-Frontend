@@ -85,6 +85,10 @@ li a.active{
   margin-left: 20px;
 }
 @media(min-width:350px) and (max-width:1500px){
+  * {
+  -webkit-tap-highlight-color: transparent;
+}
+
  
 .nav-main{
     height:15vh;
@@ -100,8 +104,9 @@ li a.active{
     
 }
 .nav-logo {
-  width: 200px;
-  height: 10px;
+  width: 250px;
+  height: 15px;
+  margin-left: 20px;
  
 
 
@@ -109,14 +114,14 @@ li a.active{
 .nav-logo p{
     color: tomato;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 14px;
        
 }
 .list-container{
  
   display: flex;
   height: 20px;
- width: 60vw;
+  width: 60vw;
   flex-direction: column;
   gap: 5px;
   /* border: 2px solid black; */
@@ -131,7 +136,7 @@ li a.active{
 
 }
 .text{
-  height: 15px;
+  height: 20px;
   width: 100px;
   border-radius: 4px;
   padding-left: 5px;
@@ -142,13 +147,14 @@ li a.active{
  
 .nav-list {
     list-style: none;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
     cursor: pointer; 
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
     gap: 15px;
+    /* border:2px solid black; */
     
 }
 .nav-list li a{
@@ -156,6 +162,9 @@ li a.active{
   color: black; 
   font-weight: 500;
   transition: color 0.3s;
+  /* border:2px solid black; */
+   
+
  
 }
 

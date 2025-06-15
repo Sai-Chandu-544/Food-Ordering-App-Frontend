@@ -86,14 +86,14 @@ box-sizing: border-box;
 }
 .body2-main h2{
     margin-top: 45px;
-    margin-left: 50px;
+    margin-left: 20px;
     font-weight: 900;
     font-size: 12px;
 }
 .body2-main p{
     margin-top: 8px;
     font-weight: 800;
-    margin-left: 50px;
+    margin-left: 20px;
     font-size: 8px;
 }
 
@@ -101,7 +101,7 @@ box-sizing: border-box;
 .container{
     height: 40vh;
     width: 100vw;
-    margin-top: 10px;  
+    margin-top: 20px;  
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-auto-rows: 80px;
@@ -115,6 +115,7 @@ box-sizing: border-box;
     width:50px;
     border-radius: 50%;
     margin-top: 20px;
+    margin-left: 20px;
     
     
 }

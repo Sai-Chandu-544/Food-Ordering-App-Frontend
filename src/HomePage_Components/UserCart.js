@@ -1,12 +1,36 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { cartContext } from "./CartContext";
 
 export const Cart = () => {
   const { cart, removeFromCart, clearCart, updateQuantity } = useContext(cartContext);
+   const navigate=useNavigate()
 
-  const handleBuy = () => {
-    alert("Purchase successful! 🎉");
-    clearCart();
+  const handleBuy = async () => {
+   
+   
+   try {
+  const response = await fetch('https://food-delivery-app-euay.onrender.com/user/place/orders', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      // userId,
+      items: cart,
+      totalAmount,
+    }),
+  });
+
+  if (!response.ok) throw new Error('Failed request');
+
+  clearCart();
+  alert('Order placed!');
+  navigate('/user/orders');
+} catch (error) {
+  alert('Failed to place order');
+}
+
   };
 
   // calculate total

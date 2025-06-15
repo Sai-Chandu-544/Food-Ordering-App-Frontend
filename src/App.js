@@ -11,6 +11,8 @@ import {useState} from 'react'
 import { Page404 } from './HomePage_Components/Page404';
 import {Details} from './HomePage_Components/details';
 import {PrivateRoute } from './HomePage_Components/privateRoutes'
+import {UserOrders} from './HomePage_Components/orders'
+
 
 
 
@@ -76,6 +78,9 @@ return (
           <Route path="/user/menu/Veg" element={<PrivateRoute><Veg /></PrivateRoute>} />
           <Route path="/user/menu/Non Veg" element={<PrivateRoute><NonVeg /></PrivateRoute>} />
           <Route path="/user/details" element={<PrivateRoute> <Details /></PrivateRoute>} />
+          <Route path="/user/orders" element={<PrivateRoute><UserOrders/></PrivateRoute>}/>
+       
+
           <Route path="*" element={<Page404 />} />
         </Routes>
       )}
