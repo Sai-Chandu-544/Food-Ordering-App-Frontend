@@ -8,7 +8,7 @@ import {Navbar} from './HomePage_Components/navbar/nav'
 import { useLocation } from 'react-router-dom';
 import {UserMenu,Veg,NonVeg,UserItem}from './HomePage_Components/userFetching';
 import {useState} from 'react'
-import { Page404 } from './HomePage_Components/Page404';
+// import { Page404 } from './HomePage_Components/Page404';
 import {Details} from './HomePage_Components/details';
 import {PrivateRoute } from './HomePage_Components/privateRoutes'
 import {UserOrders} from './HomePage_Components/orders'
