@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Food-Ordering-App-Frontend/static/css/main.a13818a0.css",
+    "main.js": "/Food-Ordering-App-Frontend/static/js/main.e5bc0fb0.js",
+    "static/media/Homeimage.jpg": "/Food-Ordering-App-Frontend/static/media/Homeimage.57055aa00750e7073756.jpg",
+    "static/media/ice_cream1.jpg": "/Food-Ordering-App-Frontend/static/media/ice_cream1.45899045c6902dabab40.jpg",
+    "static/media/nonveg1.jpg": "/Food-Ordering-App-Frontend/static/media/nonveg1.f1b92f56f6dd5be5f67d.jpg",
+    "static/media/veg1.jpg": "/Food-Ordering-App-Frontend/static/media/veg1.a5b5fae69001286e9a3c.jpg",
+    "static/media/cake1.jpg": "/Food-Ordering-App-Frontend/static/media/cake1.512cd83c07bebe7ca40b.jpg",
+    "static/media/pizza1.jpg": "/Food-Ordering-App-Frontend/static/media/pizza1.4fe3947dfca1f333afaf.jpg",
+    "static/media/salad1.jpg": "/Food-Ordering-App-Frontend/static/media/salad1.06794b39facd8c123f61.jpg",
+    "static/media/desert1.jpg": "/Food-Ordering-App-Frontend/static/media/desert1.e4e2ec8e0b801bd9ee7b.jpg",
+    "static/media/sandwich1.jpg": "/Food-Ordering-App-Frontend/static/media/sandwich1.18132ac44d83df914c67.jpg",
+    "index.html": "/Food-Ordering-App-Frontend/index.html",
+    "main.a13818a0.css.map": "/Food-Ordering-App-Frontend/static/css/main.a13818a0.css.map",
+    "main.e5bc0fb0.js.map": "/Food-Ordering-App-Frontend/static/js/main.e5bc0fb0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a13818a0.css",
+    "static/js/main.e5bc0fb0.js"
+  ]
+}
