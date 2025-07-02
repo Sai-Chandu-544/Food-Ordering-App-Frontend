@@ -44,10 +44,7 @@ export const UserMenu = ({setL,setR }) => {
 
            
           
-        } else {
-          alert(data.message || "Something went wrong");
-          
-        }
+        } 
       } catch (error) {
         console.error("Fetch error:", error);
         alert("Internal Server Problem");
@@ -117,7 +114,8 @@ export const Veg = () => {
           setVeg(data.response); 
         } else {
           alert(data.message || "Something went wrong");
-        } 
+          
+        }
       } catch (error) {
         alert("Internal Server Problem");
       }
@@ -187,9 +185,11 @@ export const NonVeg = () => {
 
         if (response.ok && data.response.length >0) {
           setNonVeg(data.response); 
-        } else {
+        }else {
           alert(data.message || "Something went wrong");
-        } 
+          
+        }
+          
       } catch (error) {
         alert("Internal Server Problem");
       }

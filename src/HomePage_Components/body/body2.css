@@ -11,7 +11,6 @@ box-sizing: border-box;
 }
 .body2-main h2{
     margin-top: 45px;
-    margin-left: 50px;
     font-weight: 900;
 }
 .body2-main p{
@@ -86,7 +85,7 @@ box-sizing: border-box;
 }
 .body2-main h2{
     margin-top: 45px;
-    margin-left: 20px;
+    margin-left: 10px;
     font-weight: 900;
     font-size: 12px;
 }

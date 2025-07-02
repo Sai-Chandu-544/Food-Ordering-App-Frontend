@@ -16,6 +16,7 @@ export const CartContextProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    // console.log("cart",cart)
     localStorage.setItem("cartItems", JSON.stringify(cart));
   }, [cart]);
 

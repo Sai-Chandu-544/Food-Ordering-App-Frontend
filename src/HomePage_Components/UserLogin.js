@@ -7,6 +7,7 @@ import { useContext } from "react";
 export const UserLogin = ({setL}) => {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const [loading,setLoading]=useState(false)
 
      const [logindata,setlogindata]=useState({
         email:"",
@@ -28,6 +29,7 @@ export const UserLogin = ({setL}) => {
     const handleAdminLogin= async(e)=>{
       e.preventDefault();
       try{
+        setLoading(true);
         const url = "https://food-delivery-app-euay.onrender.com/user/login";
         const response=await fetch(url,{
           method:"POST",
@@ -42,6 +44,7 @@ export const UserLogin = ({setL}) => {
         console.log(data)
         // console.log(data.token)
         // console.log(data.user._id)
+        setLoading(true)
 
        
     if (response.ok && data.token) {
@@ -49,7 +52,7 @@ export const UserLogin = ({setL}) => {
 
   
     //  setL(false)
-     navigate('/')
+     navigate('/home')
     
 
     
@@ -73,30 +76,54 @@ export const UserLogin = ({setL}) => {
     console.error("Error during login:", err);
     alert("Internal Server Error");
   }
+   setLoading(false)
     }
 
 
   return (
-   <div className="adminLoginContainer">
-            <p className="loginTitle">User Login</p>
+    <>
+  {loading ? (
+  <div className="loading-container">
+    <div className="spinner"></div>
+    <p className="loading">Loading...</p>
+  </div>
+) : (
+  <div className="adminLoginContainer">
+    <p className="loginTitle">User Login</p>
 
-           
-            <form className="login_form">
-                
-                <label ><p>Email:</p>
-                <input type="text" id="email" name="email" placeholder="Enter Your Email" value={logindata.email} onChange={handleChange} />
-                </label>
-                
-                
-                <label><p>Password:</p>
-                <input type="password" name="password" placeholder="Enter Your Password" value={logindata.password}  onChange={handleChange}/>
-                </label>
-                <div className="login_button">
-                    <button className="button" onClick={handleAdminLogin}>Login</button>
-                </div>
-            </form>
+    <form className="login_form">
+      <label>
+        <p>Email:</p>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Enter Your Email"
+          value={logindata.email}
+          onChange={handleChange}
+        />
+      </label>
 
-        </div>
+      <label>
+        <p>Password:</p>
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter Your Password"
+          value={logindata.password}
+          onChange={handleChange}
+        />
+      </label>
+
+      <div className="login_button">
+        <button className="button" onClick={handleAdminLogin}>
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+)}
+</>
 
   )
 }

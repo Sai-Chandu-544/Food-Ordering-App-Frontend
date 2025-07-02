@@ -42,7 +42,7 @@ export const Navbar=({handleSearch})=>{
             <ul className="nav-list">
                 {auth.isAuthenticated ? (
                     <>
-                    <li><NavLink to="/" className="isActive" >Home</NavLink></li>   
+                    <li><NavLink to="/home" className="isActive" >Home</NavLink></li>   
                   <li> <NavLink to="/user/menu" className="isActive" >Menu</NavLink></li>
                    <li><NavLink to="/user/cart" className="isActive" > Cart</NavLink></li>
                     <p onClick={handleLogOut} className="logout">Log Out</p>

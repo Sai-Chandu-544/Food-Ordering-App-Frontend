@@ -6,30 +6,62 @@ export const Cart = () => {
   const { cart, removeFromCart, clearCart, updateQuantity } = useContext(cartContext);
    const navigate=useNavigate()
 
-  const handleBuy = async () => {
-   
-   
-   try {
-  const response = await fetch('https://food-delivery-app-euay.onrender.com/user/place/orders', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      // userId,
-      items: cart,
-      totalAmount,
-    }),
-  });
+const handleBuy = async () => {
+    try {
+      
+      // Make sure we know who is buying
+      
+      const userId = localStorage.getItem("userId");
+      if (!userId) {
+        alert("Please log in first.");
+        navigate("/login");
+        return;
+      }
 
-  if (!response.ok) throw new Error('Failed request');
+      
+     
+      const items = cart.map(({ _id, Title, quantity, Price }) => ({
+        productId:_id,      // String as required by schema
+        name:Title,                        // ← lowercase “name”, not “Title”
+        quantity: quantity,
+        price: Price,
+      }));
 
-  clearCart();
-  alert('Order placed!');
-  navigate('/user/orders');
-} catch (error) {
-  alert('Failed to place order');
+      if (items.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+    
+
+      const token = localStorage.getItem("Token");
+      const response = await fetch(
+        "https://food-delivery-app-euay.onrender.com/user/place/orders",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json","Authorization": `Bearer ${token}`, },
+          body: JSON.stringify({ userId, items, totalAmount }),
+        }
+      );
+    const data = await response.json();
+    // console.log(userId)
+    // console.log(items)
+    // console.log(totalAmount)
+    console.log(data)
+
+    if (response.ok) {
+  alert("Order placed!");
+  navigate("/user/orders");
+} else {
+  alert(data.message || "Order failed");
 }
+  
+
+  } catch (error) {
+    console.error("Order error:", error);
+    alert('Failed to place order');
+  }
+
 
   };
 

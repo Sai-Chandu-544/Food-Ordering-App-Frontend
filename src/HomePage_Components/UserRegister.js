@@ -7,13 +7,6 @@ export const UserRegister=({handleStore})=>{
     const [password,setPassword]=useState("")
 
 
-    
-
-    
-    
-
-  
-
     const handleName=(e)=>{
         const newname=e.target.value
         setName(newname); 
@@ -55,7 +48,7 @@ export const UserRegister=({handleStore})=>{
     });
 
     const data = await response.json(); // always parse after checking headers
-   
+   console.log(data)
 
     if (response.ok) {
       alert(data.message || "Admin Registered Successfully");

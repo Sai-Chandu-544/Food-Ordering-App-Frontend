@@ -5,7 +5,7 @@ import { AuthContext } from "./auth";
 export const PrivateRoute = ({ children }) => {
   const { auth } = useContext(AuthContext);
   const isAuthenticated = auth.isAuthenticated || !!localStorage.getItem("Token");
-  return isAuthenticated ? children : <Navigate to="/user/login" />;
+  return isAuthenticated ? children : <Navigate to="/" />;
 };
 
 
