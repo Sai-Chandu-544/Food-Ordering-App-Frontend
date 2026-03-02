@@ -135,42 +135,92 @@ export const Navbar = () => {
 
       {/* MOBILE MENU */}
       {menuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-white p-20 space-y-20">
-          {auth.isAuthenticated ? (
-            <>
-              <ul className="flex flex-col gap-5 text-xl font-semibold">
-                <li>
-                  <NavLink to="/home" onClick={() => setMenuOpen(false)}>
-                    Home
-                  </NavLink>
-                </li>
+  <div
+    className="lg:hidden fixed inset-0 z-40 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+    onClick={() => setMenuOpen(false)} // close on outside click
+  >
+    <div
+      className="bg-white rounded-2xl shadow-2xl p-6 w-[90%] max-w-sm space-y-6 relative"
+      onClick={(e) => e.stopPropagation()} // prevent close inside
+    >
+      {/* Close Button */}
+      <button
+        className="absolute top-3 right-3 text-gray-500 hover:text-black"
+        onClick={() => setMenuOpen(false)}
+      >
+        ✕
+      </button>
 
-                <li>
-                  <NavLink to="/user/menu" onClick={() => setMenuOpen(false)}>
-                    Menu
-                  </NavLink>
-                </li>
+      {auth.isAuthenticated ? (
+        <>
+          <h3 className="text-lg font-semibold text-gray-700 border-b pb-2">
+            Navigation
+          </h3>
 
-                <li>
-                  <NavLink to="/user/cart" onClick={() => setMenuOpen(false)}>
-                    Cart
-                  </NavLink>
-                </li>
-              </ul>
+          <ul className="flex flex-col gap-3 text-gray-800 font-medium">
+            <li>
+              <NavLink
+                to="/home"
+                onClick={() => setMenuOpen(false)}
+                className="block hover:text-orange-500"
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/user/menu"
+                onClick={() => setMenuOpen(false)}
+                className="block hover:text-orange-500"
+              >
+                Menu
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/user/cart"
+                onClick={() => setMenuOpen(false)}
+                className="block hover:text-orange-500"
+              >
+                Cart
+              </NavLink>
+            </li>
+          </ul>
 
-              <div onClick={handleLogOut} className="flex items-center gap-2 text-red-600 cursor-pointer">
-                Logout <LogOut size={18} />
-              </div>
-            </>
-          ) : (
-            <>
-              <NavLink to="/user/register">Register</NavLink>
-              <NavLink to="/user/login">Login</NavLink>
-            </>
-          )}
-        </div>
+          <button
+            onClick={handleLogOut}
+            className="w-full mt-4 py-2 rounded-lg bg-red-50 text-red-600 font-semibold hover:bg-red-100 transition"
+          >
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <h3 className="text-lg font-semibold text-gray-700 pb-2">
+          </h3>
+
+          <div className="flex flex-col gap-3">
+            <NavLink
+              to="/user/register"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-center py-2 rounded-lg border border-orange-400 text-orange-500 font-medium hover:bg-orange-50"
+            >
+              Register
+            </NavLink>
+
+            <NavLink
+              to="/user/login"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-center py-2 rounded-lg bg-orange-500 text-white font-medium hover:bg-orange-600"
+            >
+              Login
+            </NavLink>
+          </div>
+        </>
       )}
-
+    </div>
+  </div>
+)}
       {/* Spacer */}
       <div className="h-[80px]" />
     </>
