@@ -23,7 +23,7 @@ export const Cart = () => {
 
       //  Create Razorpay Order
       const orderRes = await fetch(
-        `${import.meta.env.VITE_API_KEY}/user/razorpay/order`,
+        `${import.meta.env.VITE_API_KEY}/razorpay/order`,
         {
           method: "POST",
           headers: {
@@ -48,7 +48,7 @@ export const Cart = () => {
         handler: async function (response) {
           //  Verify payment
           const verifyRes = await fetch(
-            `${import.meta.env.VITE_API_KEY}/user/razorpay/verify`,
+            `${import.meta.env.VITE_API_KEY}/razorpay/verify`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },

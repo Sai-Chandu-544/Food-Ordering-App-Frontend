@@ -136,26 +136,19 @@ export const Navbar = () => {
       {/* MOBILE MENU */}
       {menuOpen && (
   <div
-    className="lg:hidden fixed inset-0 z-40 flex items-center justify-center bg-black/40 backdrop-blur-sm"
-    onClick={() => setMenuOpen(false)} // close on outside click
+    className="lg:hidden fixed inset-0 z-40 flex items-start justify-center bg-black/40 backdrop-blur-sm"
+    onClick={() => setMenuOpen(false)} 
   >
     <div
-      className="bg-white rounded-2xl shadow-2xl p-6 w-[90%] max-w-sm space-y-6 relative"
-      onClick={(e) => e.stopPropagation()} // prevent close inside
-    >
+  className="bg-white shadow-2xl  pt-20 pl-10 w-full rounded-b-2xl space-y-6 relative"
+  onClick={(e) => e.stopPropagation()}
+>
       {/* Close Button */}
-      <button
-        className="absolute top-3 right-3 text-gray-500 hover:text-black"
-        onClick={() => setMenuOpen(false)}
-      >
-        ✕
-      </button>
+     
 
       {auth.isAuthenticated ? (
         <>
-          <h3 className="text-lg font-semibold text-gray-700 border-b pb-2">
-            Navigation
-          </h3>
+          
 
           <ul className="flex flex-col gap-3 text-gray-800 font-medium">
             <li>

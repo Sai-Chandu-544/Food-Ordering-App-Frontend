@@ -22,7 +22,7 @@ export const UserOrders = () => {
     const fetchOrders = async () => {
       try {
         const res = await fetch(
-          `${import.meta.env.VITE_API_KEY}/user/orders/${userId}`,
+          `${import.meta.env.VITE_API_KEY}/orders/${userId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -287,22 +287,7 @@ const toggleOrderExpand = (orderId) => {
         )}
       </div>
 
-      {/* <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-          opacity: 0;
-        }
-      `}</style> */}
+     
     </div>
   );
 };

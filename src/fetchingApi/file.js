@@ -1,7 +1,7 @@
 
 export const userRegister = async (data) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_KEY}/user/register`, {
+    const response = await fetch(`${import.meta.env.VITE_API_KEY}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export const userRegister = async (data) => {
 
 export const userLogin= async(data)=>{
     try{
-        const response= await fetch(`${import.meta.env.VITE_API_KEY}/user/login`,{
+        const response= await fetch(`${import.meta.env.VITE_API_KEY}/login`,{
             method:"POST",
             headers: {
                 "Content-Type": "application/json",

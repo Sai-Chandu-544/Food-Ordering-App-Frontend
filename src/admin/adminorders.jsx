@@ -6,7 +6,7 @@ export const AdminOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await fetch('http://localhost:5000/orders/admin');
+        const res = await fetch(`${import.meta.env.VITE_API_KEY}/orders/admin`);
         if (!res.ok) throw new Error('Failed to fetch orders');
         const data = await res.json();
         setOrders(data);

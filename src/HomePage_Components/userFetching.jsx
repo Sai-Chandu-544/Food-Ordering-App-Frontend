@@ -16,7 +16,7 @@ export const Veg = () => {
     const fetchVeg = async () => {
       try {
         setLoading(true);
-        const url = `${import.meta.env.VITE_API_KEY}/user/list/Veg`;
+        const url = `${import.meta.env.VITE_API_KEY}/list/Veg`;
         const token = localStorage.getItem("Token");
 
         const response = await fetch(url, {
@@ -150,7 +150,7 @@ export const NonVeg = () => {
     const fetchNonVeg = async () => {
       try {
         setLoading(true);
-        const url = `${import.meta.env.VITE_API_KEY}/user/list/Non Veg`;
+        const url = `${import.meta.env.VITE_API_KEY}/list/Non Veg`;
         const token = localStorage.getItem("Token");
 
         const response = await fetch(url, {

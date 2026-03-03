@@ -136,7 +136,7 @@ export const AdminAddProducts = () => {
       e.preventDefault();
 
       try{
-         const url = "https://food-delivery-app-euay.onrender.com/admin/result";
+         const url = `${import.meta.env.VITE_API_KEY}/admin/result`;
          const token = localStorage.getItem("Token"); // Make sure this token is valid
          const response= await fetch(url,{
           method:"POST",
@@ -319,7 +319,7 @@ export const AdminAllUsers = () => {
   useEffect(() => {
     const get_users = async () => {
       try {
-        const url = "https://food-delivery-app-euay.onrender.com/admin/users";
+        const url = `${import.meta.env.VITE_API_KEY}/admin/users`;
         const token = localStorage.getItem("Token");
 
         const response = await fetch(url, {
@@ -387,7 +387,7 @@ const [menu, setMenu] = useState([]);
    useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const url = "https://food-delivery-app-euay.onrender.com/admin/menu";
+        const url = `${import.meta.env.VITE_API_KEY}/admin/menu`;
         const token = localStorage.getItem("Token");
 
         const response = await fetch(url, {
@@ -568,7 +568,7 @@ export const AdminRegister=({handleRegisterIcon})=>{
 
    const handleAdminRegister = async (e) => {
   e.preventDefault();
-  const url = "https://food-delivery-app-euay.onrender.com/admin/register";
+  const url = `${import.meta.env.VITE_API_KEY}/admin/register`;
 
   try {
     const res = await fetch(url, {
@@ -693,7 +693,7 @@ export const AdminLogin = ({handleLoginIcon}) => {
     const handleAdminLogin= async(e)=>{
       e.preventDefault();
       try{
-        const url = "https://food-delivery-app-euay.onrender.com/admin/login";
+        const url = `${import.meta.env.VITE_API_KEY}/admin/login`;
         const response=await fetch(url,{
           method:"POST",
           headers: {
