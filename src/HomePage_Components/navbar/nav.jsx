@@ -171,6 +171,15 @@ export const Navbar = () => {
             </li>
             <li>
               <NavLink
+                to="/user/orders"
+                onClick={() => setMenuOpen(false)}
+                className="block hover:text-orange-500"
+              >
+                Orders
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/user/cart"
                 onClick={() => setMenuOpen(false)}
                 className="block hover:text-orange-500"

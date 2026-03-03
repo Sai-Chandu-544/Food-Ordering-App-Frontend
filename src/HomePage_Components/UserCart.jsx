@@ -56,7 +56,7 @@ export const Cart = () => {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,
                 razorpay_signature: response.razorpay_signature,
-                cartItems: cart,        // your cart state
+                items: items,       // your cart state
                 totalAmount: totalAmount,
                 userId: userId,
               }),
