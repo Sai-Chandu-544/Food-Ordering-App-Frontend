@@ -61,7 +61,7 @@ export const Cart = () => {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,
                 razorpay_signature: response.razorpay_signature,
-                items: orderItems, // 🔥 USE SNAPSHOT
+                items: orderItems, 
                 totalAmount,
                 userId,
               }),
@@ -72,7 +72,7 @@ export const Cart = () => {
 
           if (verifyData.success) {
             toast.success("Payment successful!");
-            clearCart();  // 🔥 clear AFTER order saved
+            clearCart();  
             navigate("/user/orders");
           } else {
             toast.error("Payment verification failed");
