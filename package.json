@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Sai-Chandu-544.github.io/Food-Ordering-App-Frontend",
+
   "name": "my-project",
   "private": true,
   "version": "0.0.0",
@@ -8,9 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-     "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
+    
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.61.1",
