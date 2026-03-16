@@ -72,8 +72,8 @@ export const UserLogin = () => {
 
       await signIn.authenticateWithRedirect({
         strategy: "oauth_google",
-        redirectUrl: "/Food-Ordering-App-Frontend/sso-callback",
-        redirectUrlComplete: "/Food-Ordering-App-Frontend/home",
+        redirectUrl: "/sso-callback",
+        redirectUrlComplete: "/home",
       });
 
     } catch (err) {
