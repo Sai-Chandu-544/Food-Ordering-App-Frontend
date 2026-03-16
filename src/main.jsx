@@ -18,7 +18,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-    <BrowserRouter basename="/Food-Ordering-App-Frontend">
+    <BrowserRouter>
     
         <CartContextProvider>
           <Toaster position="top-center" />
