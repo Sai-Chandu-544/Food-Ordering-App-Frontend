@@ -1,52 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import { Loader2, Search, Leaf, Salad,Flame } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Loader2, Search, Leaf, Salad, Flame } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@clerk/clerk-react";
 
 export const Veg = () => {
+
   const [veg, setVeg] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const { getToken } = useAuth();
+
   const navigate = useNavigate();
 
   const handleItem = (item) => {
     navigate("/user/details", { state: item });
   };
 
-  useEffect(() => {
-    const fetchVeg = async () => {
-      try {
-        setLoading(true);
-        const url = `${import.meta.env.VITE_API_KEY}/list/Veg`;
-        const token = localStorage.getItem("Token");
+ useEffect(() => {
 
-        const response = await fetch(url, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-          },
-        });
+  const fetchVeg = async () => {
 
-        const data = await response.json();
+    try {
 
-        if (response.ok && data.response.length > 0) {
-          setVeg(data.response);
-        } else {
-          alert(data.message || "Something went wrong");
-        }
-      } catch (error) {
-        alert("Internal Server Problem");
+      setLoading(true);
+
+      const token = await getToken({ template: "default" });
+
+      const url = `${import.meta.env.VITE_API_KEY}/list/Veg`;
+
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.response) {
+        setVeg(data.response);
+      } else {
+        alert(data.message || "Something went wrong");
       }
+
+    } catch (error) {
+
+      console.error(error);
+      alert("Internal Server Problem");
+
+    } finally {
       setLoading(false);
-    };
+    }
 
-    fetchVeg();
-  }, []);
+  };
 
-  const filteredVeg = veg.filter(item =>
-    item.Title.toLowerCase().includes(searchQuery.toLowerCase())
+  fetchVeg();
+
+}, []);
+  const filteredVeg = veg.filter((item) =>
+    item?.Title?.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
   return (
     <>
       <div className="px-0">
@@ -136,10 +150,14 @@ export const Veg = () => {
   );
 };
 
+
 export const NonVeg = () => {
+
   const [nonVeg, setNonVeg] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const { getToken } = useAuth();
   const navigate = useNavigate();
 
   const handleItem = (item) => {
@@ -147,40 +165,51 @@ export const NonVeg = () => {
   };
 
   useEffect(() => {
+
     const fetchNonVeg = async () => {
+
       try {
+
         setLoading(true);
+
+        const token = await getToken({template: "default" });
+
         const url = `${import.meta.env.VITE_API_KEY}/list/Non Veg`;
-        const token = localStorage.getItem("Token");
 
         const response = await fetch(url, {
-          method: "GET",
           headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-          },
+            Authorization: `Bearer ${token}`
+          }
         });
 
         const data = await response.json();
 
-        if (response.ok && data.response.length > 0) {
+        if (response.ok && data.response) {
           setNonVeg(data.response);
         } else {
           alert(data.message || "Something went wrong");
         }
+
       } catch (error) {
+
+        console.error(error);
         alert("Internal Server Problem");
+
+      } finally {
+
+        setLoading(false);
+
       }
-      setLoading(false);
+
     };
 
     fetchNonVeg();
-  }, []);
+
+  }, [getToken]);
 
   const filteredNonVeg = nonVeg.filter(item =>
-    item.Title.toLowerCase().includes(searchQuery.toLowerCase())
+    item?.Title?.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
   return (
     <>
       <div className="px-0">

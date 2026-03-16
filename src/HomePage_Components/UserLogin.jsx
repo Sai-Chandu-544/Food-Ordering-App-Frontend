@@ -1,134 +1,150 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "./auth";
-import { useContext } from "react";
 import toast from "react-hot-toast";
-import {userLogin}from "../fetchingApi/file"
-  
+import { useSignIn, useAuth } from "@clerk/clerk-react";
 
-export const UserLogin = ({setL}) => {
+export const UserLogin = () => {
+
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
-  const [loading,setLoading]=useState(false)
 
-     const [logindata,setlogindata]=useState({
-        email:"",
-        password:""
-     })
-     
+  const { signIn, setActive, isLoaded } = useSignIn();
+  const { getToken } = useAuth();
 
-     const handleChange=(e)=>{
-        setlogindata((prev)=>({
-            ...prev,
-            [e.target.name]:e.target.value
+  const [logindata, setlogindata] = useState({
+    email: "",
+    password: ""
+  });
 
-          }))
-          
-
-     }
-    //  console.log("data",logindata)
-
-    const handleAdminLogin= async(e)=>{
-      e.preventDefault();
-      try{
-        setLoading(true);
-        const data=await userLogin(logindata)
-        // console.log(data)
-        // console.log(data.token)
-        // console.log(data.user._id)
-        setLoading(false)
-
-       
-    if ( data.token) {
-  login(data.token,data.user._id,data.user.name,data.user.email)
-
-  
-    //  setL(false)
-     navigate('/home')
-    
-      toast.success("Login was Successful");
-      
-    } else if (data.message === "Please Register!") {
-  toast.error("Please Register!");
-  navigate("/user/register");
-} else {
-  alert("Login failed. Please try again.");
-}
-
+  const handleChange = (e) => {
     setlogindata({
-      email:"",
-      password:""
-    })
+      ...logindata,
+      [e.target.name]: e.target.value
+    });
+  };
 
+  const handleUserLogin = async (e) => {
 
-  } catch (err) {
-    console.error("Error during login:", err);
-    toast.error("Internal Server Error");
-  }
-   setLoading(false)
+    e.preventDefault();
+
+    if (!isLoaded) return;
+
+    try {
+
+      const result = await signIn.create({
+        identifier: logindata.email,
+        password: logindata.password,
+      });
+
+      if (result.status === "complete") {
+
+        //  Activate Clerk session
+        await setActive({
+          session: result.createdSessionId
+        });
+
+        //  Now get token
+        const token = await getToken();
+
+        // console.log("TOKEN:", token);
+
+        // localStorage.setItem("clerk_token", token);
+
+        toast.success("Login successful");
+
+        navigate("/home");
+
+      }
+
+    } catch (err) {
+
+      console.error(err);
+      toast.error("Invalid email or password");
+
     }
 
+  };
+
+  const handleGoogleLogin = async () => {
+
+    if (!isLoaded) return;
+
+    try {
+
+      await signIn.authenticateWithRedirect({
+        strategy: "oauth_google",
+        redirectUrl: "/Food-Ordering-App-Frontend/sso-callback",
+        redirectUrlComplete: "/Food-Ordering-App-Frontend/home",
+      });
+
+    } catch (err) {
+
+      console.error(err);
+      toast.error("Google login failed");
+
+    }
+
+  };
 
   return (
-    <>
-  {loading ? (
-  <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3">
-    <div className="w-10 h-10 border-4 border-orange-400 border-t-transparent rounded-full animate-spin"></div>
-    <p className="text-gray-500">Loading...</p>
-  </div>
-) : (
-  <div className="flex items-center justify-center min-h-[70vh] px-4">
-    
-    {/* Card */}
-    <div className="w-full max-w-md bg-white shadow-lg rounded-xl p-6 md:p-8">
-      
-      {/* Title */}
-      <p className="text-2xl font-bold text-center mb-6 text-gray-800">
-        User Login
-      </p>
+    <div className="flex items-center justify-center min-h-[70vh] px-4">
 
-      {/* Form */}
-      <form className="flex flex-col gap-4">
-        
-        {/* Email */}
-        <label className="flex flex-col gap-1">
-          <span className="font-medium text-gray-700">Email</span>
+      <div className="w-full max-w-md bg-white shadow-lg rounded-xl p-6 md:p-8">
+
+        <p className="text-2xl font-bold text-center mb-6 text-gray-800">
+          User Login
+        </p>
+
+        <form className="flex flex-col gap-4" onSubmit={handleUserLogin}>
+
           <input
-            type="text"
+            type="email"
             name="email"
             placeholder="Enter Your Email"
             value={logindata.email}
             onChange={handleChange}
-            className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            required
+            className="border border-gray-300 rounded-md px-3 py-2"
           />
-        </label>
 
-        {/* Password */}
-        <label className="flex flex-col gap-1">
-          <span className="font-medium text-gray-700">Password</span>
           <input
             type="password"
             name="password"
             placeholder="Enter Your Password"
             value={logindata.password}
             onChange={handleChange}
-            className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            required
+            className="border border-gray-300 rounded-md px-3 py-2"
           />
-        </label>
 
-        {/* Button */}
-        <button
-          onClick={handleAdminLogin}
-          className="mt-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-md transition duration-200"
-        >
-          Login
-        </button>
-      </form>
+          <button
+            type="submit"
+            className="mt-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-md"
+          >
+            Login
+          </button>
+
+          <div className="flex items-center gap-3 my-3">
+            <div className="flex-1 h-px bg-gray-300"></div>
+            <span className="text-gray-500 text-sm">OR</span>
+            <div className="flex-1 h-px bg-gray-300"></div>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleGoogleLogin}
+            className="flex items-center justify-center gap-2 w-full border py-2 rounded-md hover:bg-gray-100"
+          >
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              className="w-5 h-5"
+              alt="google"
+            />
+            Continue with Google
+          </button>
+
+        </form>
+
+      </div>
     </div>
-  </div>
-)}
-
-</>
-
-  )
-}
+  );
+};

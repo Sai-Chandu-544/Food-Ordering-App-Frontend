@@ -3,98 +3,130 @@ import { useNavigate } from "react-router-dom";
 import { cartContext } from "./CartContext";
 import { ShoppingCart, Leaf, Flame, Minus, Plus, Trash2, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
+import { useUser, useAuth } from "@clerk/clerk-react";
 
 export const Cart = () => {
+
   const { cart, removeFromCart, clearCart, updateQuantity } = useContext(cartContext);
-  const navigate = useNavigate()
+
+  const { user } = useUser();
+  const { getToken } = useAuth();
+
+  const navigate = useNavigate();
+
 
   const handleBuy = async () => {
-  try {
-    const userId = localStorage.getItem("userId");
-    const token = localStorage.getItem("Token");
 
-    // 🔥 CREATE SNAPSHOT BEFORE PAYMENT
-    const orderItems = cart.map(({ _id, Title, quantity, Price }) => ({
-      productId: _id,
-      name: Title,
-      quantity,
-      price: Price,
-    }));
+    try {
 
-    // Safety check
-    if (orderItems.length === 0) {
-      toast.error("Cart is empty");
-      return;
-    }
-
-    // 🔥 Create Razorpay Order
-    const orderRes = await fetch(
-      `${import.meta.env.VITE_API_KEY}/razorpay/order`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ amount: totalAmount }),
+      if (!user) {
+        toast.error("Please login first");
+        return;
       }
-    );
 
-    const orderData = await orderRes.json();
+      const token = await getToken({template: "default" });
 
-    const options = {
-      key: orderData.key,
-      amount: orderData.amount,
-      currency: orderData.currency,
-      name: "Food App",
-      description: "Order Payment",
-      order_id: orderData.orderId,
+      const orderItems = cart.map(({ _id, Title, quantity, Price }) => ({
+        productId: _id,
+        name: Title,
+        quantity,
+        price: Price
+      }));
 
-      handler: async function (response) {
-        try {
-          const verifyRes = await fetch(
-            `${import.meta.env.VITE_API_KEY}/razorpay/verify`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-                items: orderItems, 
-                totalAmount,
-                userId,
-              }),
+      if (orderItems.length === 0) {
+        toast.error("Cart is empty");
+        return;
+      }
+
+      const orderRes = await fetch(
+        `${import.meta.env.VITE_API_KEY}/razorpay/order`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({ amount: totalAmount })
+        }
+      );
+
+      const orderData = await orderRes.json();
+
+      const options = {
+
+        key: orderData.key,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: "Food App",
+        description: "Order Payment",
+        order_id: orderData.orderId,
+
+        handler: async function (response) {
+
+          try {
+
+            const verifyRes = await fetch(
+              `${import.meta.env.VITE_API_KEY}/razorpay/verify`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_signature: response.razorpay_signature,
+                  items: orderItems,
+                  totalAmount,
+                  userId: user.id
+                })
+              }
+            );
+
+            const verifyData = await verifyRes.json();
+
+            if (verifyData.success) {
+
+              toast.success("Payment successful!");
+
+              clearCart();
+
+              navigate("/user/orders");
+
+            } else {
+
+              toast.error("Payment verification failed");
+
             }
-          );
 
-          const verifyData = await verifyRes.json();
+          } catch (err) {
 
-          if (verifyData.success) {
-            toast.success("Payment successful!");
-            clearCart();  
-            navigate("/user/orders");
-          } else {
-            toast.error("Payment verification failed");
+            console.error(err);
+
+            toast.error("Verification failed");
+
           }
 
-        } catch (err) {
-          console.error(err);
-          toast.error("Verification failed");
-        }
-      },
+        },
 
-      theme: { color: "#f97316" },
-    };
+        theme: { color: "#f97316" }
 
-    const rzp = new window.Razorpay(options);
-    rzp.open();
+      };
 
-  } catch (err) {
-    console.error(err);
-    toast.error("Payment failed");
-  }
-};
+      const rzp = new window.Razorpay(options);
+
+      rzp.open();
+
+    } catch (err) {
+
+      console.error(err);
+
+      toast.error("Payment failed");
+
+    }
+
+  };
   // calculate total
   const totalAmount = cart.reduce((acc, item) => acc + item.Price * item.quantity, 0);
 

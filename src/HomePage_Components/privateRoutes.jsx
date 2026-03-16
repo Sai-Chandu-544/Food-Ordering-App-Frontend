@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "./auth";
+import { useUser } from "@clerk/clerk-react";
 
 export const PrivateRoute = ({ children }) => {
-  const { auth } = useContext(AuthContext);
-  const isAuthenticated = auth.isAuthenticated || !!localStorage.getItem("Token");
-  return isAuthenticated ? children : <Navigate to="/" />;
+
+  const { isSignedIn, isLoaded } = useUser();
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
+
+  return isSignedIn ? children : <Navigate to="/user/login" />;
 };
-
-

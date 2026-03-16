@@ -1,37 +1,44 @@
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Trash2, ShoppingBag, Package, AlertCircle, ChevronDown } from 'lucide-react';
+import { Trash2, ShoppingBag, Package, AlertCircle, ChevronDown } from "lucide-react";
 import toast from "react-hot-toast";
-
+import { useUser, useAuth } from "@clerk/clerk-react";
 
 export const UserOrders = () => {
+
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState("");
-  const userId = localStorage.getItem("userId");
-  const token = localStorage.getItem("Token");
+
+  const { user, isLoaded, isSignedIn } = useUser();
+  const { getToken } = useAuth();
+
   const [expandedOrders, setExpandedOrders] = useState(new Set());
   const navigate = useNavigate();
 
-   useEffect(() => {
-    console.log("orders:", orders);
-    },[orders])
-
-
   useEffect(() => {
-    if (!userId) {
-      navigate("/login");
+
+    if (!isLoaded) return;
+
+    if (!isSignedIn) {
+      navigate("/user/login");
       return;
     }
-   
+
     const fetchOrders = async () => {
+
       try {
+
+        const token = await getToken({template: "default" });
+
         const res = await fetch(
-          `${import.meta.env.VITE_API_KEY}/orders/${userId}`,
+          `${import.meta.env.VITE_API_KEY}/orders/${user.id}`,
           {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
           }
         );
+
         const data = await res.json();
 
         if (res.ok && data.orders) {
@@ -39,24 +46,34 @@ export const UserOrders = () => {
         } else {
           setError(data.message || "Failed to fetch orders");
         }
+
       } catch (err) {
         console.error(err);
         setError("Network error");
       }
+
     };
 
     fetchOrders();
-  }, [userId, token, navigate]);
+
+  }, [isLoaded, isSignedIn, user, getToken, navigate]);
 
   const handleRemoveOrder = async (orderId) => {
+
     try {
+
+      const token = await getToken({template: "default" });
+
       const res = await fetch(
         `${import.meta.env.VITE_API_KEY}/orders/${orderId}`,
         {
           method: "DELETE",
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
       );
+
       const data = await res.json();
 
       if (res.ok && data.success) {
@@ -65,22 +82,19 @@ export const UserOrders = () => {
       } else {
         toast.error(data.message || "Failed to remove order");
       }
+
     } catch (err) {
-      toast.error("Error removing order");
       console.error(err);
+      toast.error("Error removing order");
     }
+
   };
 
-
-
   const toggleOrderExpand = (orderId) => {
-    setExpandedOrders(prev => {
+    setExpandedOrders((prev) => {
       const newSet = new Set(prev);
-      if (newSet.has(orderId)) {
-        newSet.delete(orderId);
-      } else {
-        newSet.add(orderId);
-      }
+      if (newSet.has(orderId)) newSet.delete(orderId);
+      else newSet.add(orderId);
       return newSet;
     });
   };
